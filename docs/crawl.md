@@ -1,8 +1,8 @@
-# Crawl assessment (.NET 8)
+# Trailmap Crawl (.NET 8)
 
-Graded job-based web crawler: **Crawl.Api** + **Crawl.Worker** + PostgreSQL + RabbitMQ.
+Job-based web crawler: **Crawl.Api** + **Crawl.Worker** + PostgreSQL + RabbitMQ.
 
-Rubric narrative (architecture, idempotency, retries, DLQ, DLR, assessment PDF priorities, cloud sketch): [crawl-readme.md](crawl-readme.md).
+Architecture, idempotency, retries, DLQ, DLR, roadmap, and cloud sketch: [crawl-readme.md](crawl-readme.md).
 
 ## Run (Compose)
 
@@ -128,7 +128,7 @@ Primary scale path for long/large jobs: **add `Crawl.Worker` consumers** on Rabb
 | In-flight pages | `GET /api/ops/inflight` |
 | Cloud sketch | `infra/terraform/modules/crawl-ecs/autoscaling.tf` (App Auto Scaling + CW alarms; **no apply**) |
 
-Per-job ephemeral EC2 provision/handoff/delete remains stretch **next**, not the graded primary path.
+Per-job ephemeral EC2 provision/handoff/delete remains stretch **next**, not the primary production path.
 
 ## SignalR realtime
 
@@ -150,9 +150,9 @@ Job Details subscribes to `/hubs/crawl-jobs` for `jobProgress` (status, `%`, pag
 
 ## vs [WMalka/UrlCrawler](https://github.com/WMalka/UrlCrawler)
 
-UrlCrawler is a strong timed take-home (and an explicit cut list). This engine closes the crawl-quality gaps they deferred, while staying HTML-only / depth / max-pages / DLR / RabbitMQ rubric-correct:
+UrlCrawler motivated several design choices (and an explicit defer list). This engine closes crawl-quality gaps while staying HTML-only / depth / max-pages / DLR / RabbitMQ–correct:
 
-| Gap in UrlCrawler | This assessment crawler |
+| Gap in UrlCrawler | Trailmap crawler |
 |-------------------|-------------------------|
 | robots.txt / politeness explicitly **cut** | robots.txt + Crawl-delay + per-host delay |
 | No concurrent-fetch / DOWNLOAD_DELAY story beyond MassTransit prefetch | `MaxConcurrentFetches` + `HostPolitenessGate` |
@@ -164,7 +164,7 @@ UrlCrawler is a strong timed take-home (and an explicit cut list). This engine c
 | SQL Server + MassTransit outbox | PostgreSQL / Aurora path + Amazon MQ sketch; Compose demo |
 | No assistive AI (by design) | AI overlays **assist** operators; never own links/DLR |
 
-Still not a full Scrapy port (no JS render, no broad middleware ecosystem, no spider contracts). Intentional: graded **job crawler** with Scrapy-class fetch hygiene.
+Still not a full Scrapy port (no JS render, no broad middleware ecosystem, no spider contracts). Intentional: focused **job crawler** with Scrapy-class fetch hygiene.
 
 ## Tests
 

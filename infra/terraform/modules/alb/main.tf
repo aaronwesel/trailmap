@@ -17,7 +17,7 @@
 #   - Sticky sessions are OFF for the API TG: JWT auth is stateless; stickiness
 #     would pin clients to a single task and defeat horizontal scale-out.
 #
-# DO NOT terraform apply until assessment day.
+# DO NOT terraform apply before production apply is authorized.
 
 resource "aws_lb" "this" {
   name               = substr("${var.name_prefix}-alb", 0, 32)
@@ -28,7 +28,7 @@ resource "aws_lb" "this" {
   subnets = var.public_subnet_ids
 
   drop_invalid_header_fields = true
-  enable_deletion_protection = false # enable on assessment-day prod
+  enable_deletion_protection = false # enable on production launch prod
   # Cross-zone load balancing is on by default for ALBs (even request spread).
   enable_cross_zone_load_balancing = true
 

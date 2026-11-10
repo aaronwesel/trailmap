@@ -1,6 +1,6 @@
-name: AssessmentApp
+name: TrailmapApp
 options:
-  bundleIdPrefix: com.assessment
+  bundleIdPrefix: com.trailmap
   deploymentTarget:
     iOS: "17.0"
   createIntermediateGroups: true
@@ -16,7 +16,7 @@ targets:
       - path: AssessmentApp
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.assessment.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.trailmap.app
         INFOPLIST_FILE: AssessmentApp/Info.plist
         GENERATE_INFOPLIST_FILE: false
         CURRENT_PROJECT_VERSION: 1

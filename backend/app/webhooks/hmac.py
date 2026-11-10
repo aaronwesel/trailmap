@@ -1,7 +1,7 @@
 """
 HMAC signatures for outbound webhook deliveries.
 
-Recipients verify `X-Assessment-Signature: sha256=<hex>` over the raw body
+Recipients verify `X-Trailmap-Signature: sha256=<hex>` over the raw body
 using the shared `WEBHOOK_SIGNING_SECRET`. Never put PHI in webhook payloads.
 """
 

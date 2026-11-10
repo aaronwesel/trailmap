@@ -98,7 +98,7 @@ curl -sS -X POST "$API/api/v1/webhooks/outbox" \
 curl -sS -X POST "$API/api/v1/webhooks/outbox/process" -H "Authorization: Bearer $ADMIN_TOKEN"
 ```
 
-Deliveries include `X-Assessment-Signature: sha256=...` over the raw body
+Deliveries include `X-Trailmap-Signature: sha256=...` over the raw body
 (`WEBHOOK_SIGNING_SECRET`). Failed attempts retry with exponential backoff until
 `dead`.
 

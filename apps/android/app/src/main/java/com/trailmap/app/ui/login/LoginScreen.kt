@@ -1,4 +1,4 @@
-package com.assessment.app.ui.login
+package com.trailmap.app.ui.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,8 +25,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.assessment.app.config.ApiConfig
-import com.assessment.app.ui.theme.AssessmentTheme
+import com.trailmap.app.config.ApiConfig
+import com.trailmap.app.ui.theme.TrailmapTheme
 
 /**
  * Scaffold login UI only.
@@ -51,7 +51,7 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Text(
-            text = "Assessment",
+            text = "Trailmap",
             style = MaterialTheme.typography.headlineMedium,
         )
         Text(
@@ -118,7 +118,7 @@ fun LoginScreen(
 @Preview(showBackground = true)
 @Composable
 private fun LoginScreenPreview() {
-    AssessmentTheme {
+    TrailmapTheme {
         LoginScreen()
     }
 }

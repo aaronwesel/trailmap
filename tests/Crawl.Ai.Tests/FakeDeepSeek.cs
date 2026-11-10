@@ -59,7 +59,7 @@ public class HardRuleGuardTests
         var dir = new DirectoryInfo(AppContext.BaseDirectory);
         while (dir is not null)
         {
-            if (File.Exists(Path.Combine(dir.FullName, "Assessment.sln"))
+            if (File.Exists(Path.Combine(dir.FullName, "Crawl.sln"))
                 || Directory.Exists(Path.Combine(dir.FullName, "src", "Crawl.Ai")))
             {
                 return dir.FullName;

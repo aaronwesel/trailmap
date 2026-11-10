@@ -1,4 +1,4 @@
-# Secret shells only — never commit real values. Populate on assessment day.
+# Secret shells only — never commit real values. Populate in production.
 # KMS-encrypted Secrets Manager entries feed ECS task secrets (JWT, DB, Redis,
 # optional Slack webhook). HIPAA: rotate values; keep PHI out of secret JSON keys.
 
@@ -53,11 +53,11 @@ resource "aws_secretsmanager_secret_version" "app" {
 resource "aws_secretsmanager_secret_version" "db" {
   secret_id = aws_secretsmanager_secret.db.id
   secret_string = jsonencode({
-    username = "assessment_admin"
+    username = "trailmap_admin"
     password = "CHANGE_ME_BEFORE_APPLY"
     engine   = "postgres"
     port     = 5432
-    dbname   = "assessment"
+    dbname   = "trailmap"
   })
 }
 

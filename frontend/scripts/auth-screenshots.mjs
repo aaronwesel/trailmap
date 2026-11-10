@@ -41,9 +41,9 @@ async function seedSession(page, email) {
   ).json()
   await page.evaluate(
     ({ tokens, user }) => {
-      sessionStorage.setItem('assessment.auth.tokens', JSON.stringify(tokens))
+      sessionStorage.setItem('trailmap.auth.tokens', JSON.stringify(tokens))
       sessionStorage.setItem(
-        'assessment.auth.user',
+        'trailmap.auth.user',
         JSON.stringify({
           id: user.subject,
           email: user.email,

@@ -34,7 +34,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    app_name: str = "assessment-api"
+    app_name: str = "trailmap-api"
     environment: Literal["local", "dev", "staging", "prod", "test"] = "local"
     debug: bool = False
     api_v1_prefix: str = "/api/v1"
@@ -74,9 +74,9 @@ class Settings(BaseSettings):
     )
 
     # MFA: when true, password users with mfa_enabled must send totp_code on login.
-    mfa_issuer: str = Field(default="Assessment", validation_alias="MFA_ISSUER")
+    mfa_issuer: str = Field(default="Trailmap", validation_alias="MFA_ISSUER")
 
-    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/assessment"
+    database_url: str = "postgresql+psycopg://app:changeme-local-only@localhost:5432/app"
     redis_url: str = "redis://localhost:6379/0"
 
     # Google Identity Services (One Tap) — accept GOOGLE_* and GOOGLE_OAUTH_* names

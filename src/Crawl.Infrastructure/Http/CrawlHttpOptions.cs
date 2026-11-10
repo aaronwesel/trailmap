@@ -23,11 +23,11 @@ public sealed class CrawlHttpOptions
     public bool RespectRobotsTxt { get; set; } = true;
 
     /// <summary>User-Agent token matched against robots.txt groups.</summary>
-    public string UserAgentToken { get; set; } = "CrawlAssessmentBot";
+    public string UserAgentToken { get; set; } = "TrailmapCrawlBot";
 
     /// <summary>Full User-Agent header sent on fetches.</summary>
     public string UserAgent { get; set; } =
-        "CrawlAssessmentBot/1.0 (+https://github.com/aaronwesel/assessment)";
+        "TrailmapCrawlBot/1.0 (+https://github.com/aaronwesel/trailmap)";
 
     /// <summary>Max HTTP redirects to follow (loop-guarded).</summary>
     public int MaxRedirects { get; set; } = 5;

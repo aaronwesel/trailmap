@@ -1,6 +1,6 @@
 # Load balancing & scaling
 
-How HTTP traffic fans out in the assessment SaaS scaffold, and how to scale **API** vs **worker** capacity independently. Infra is Terraform-only prep — **do not `terraform apply` until assessment day.**
+How HTTP traffic fans out in the Trailmap platform, and how to scale **API** vs **worker** capacity independently. Infra is Terraform-only prep — **do not `terraform apply` before production apply is authorized.**
 
 ## Traffic path
 
@@ -53,7 +53,7 @@ Bootstrap `desired_count` is only the starting floor. Runtime DesiredCount is ow
 - **More async processing (Rekognition, DeepSeek jobs, email fan-out)** → raise `worker_min_capacity` / `worker_max_capacity`. Does not change ALB registration.
 - Do not scale workers to fix HTTP 5xx from the API, or scale API to clear a Redis queue.
 
-Optional assessment-day follow-up: publish queue depth as a custom CloudWatch metric and add a worker step scaling policy.
+Optional production launch follow-up: publish queue depth as a custom CloudWatch metric and add a worker step scaling policy.
 
 ## App-level complements
 

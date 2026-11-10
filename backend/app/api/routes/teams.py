@@ -62,7 +62,7 @@ class InviteMemberResponse(BaseModel):
     team_id: str
     role: str
     status: str = "pending"
-    # Intentionally omit invite email from response body in prep to reduce
+    # Intentionally omit invite email from response body in local development to reduce
     # accidental logging of PII in API gateways; clients already know the email.
 
 
@@ -160,7 +160,7 @@ def invite_member(
     """
     Stub invite: persists pending TeamMembership; optional Slack notify.
 
-    Email delivery (SES) is intentionally not wired here — assessment-day can
+    Email delivery (SES) is intentionally not wired here — production launch can
     attach SES without changing the membership model.
     """
     role = TeamRole(body.role)

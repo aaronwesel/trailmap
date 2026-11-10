@@ -28,7 +28,7 @@ variable "database_name" {
 
 variable "master_secret_arn" {
   type        = string
-  description = "Secrets Manager ARN holding master username/password (assessment-day wiring)"
+  description = "Secrets Manager ARN holding master username/password (production launch wiring)"
 }
 
 variable "tags" {

@@ -57,8 +57,8 @@ def test_outbox_enqueue_and_process(client: TestClient) -> None:
     assert len(results) == 1
     assert results[0].status == "delivered"
     assert captured
-    assert captured[0][2]["X-Assessment-Signature"].startswith("sha256=")
-    assert captured[0][2]["X-Assessment-Event"] == "team_updated"
+    assert captured[0][2]["X-Trailmap-Signature"].startswith("sha256=")
+    assert captured[0][2]["X-Trailmap-Event"] == "team_updated"
 
 
 def test_outbox_retries_on_failure(client: TestClient) -> None:

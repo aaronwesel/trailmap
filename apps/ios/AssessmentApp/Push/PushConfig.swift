@@ -14,11 +14,11 @@ enum PushConfig {
     static let apnsKeyId = "REPLACE_ME_APNS_KEY_ID"
 
     /// Bundle topic / aps-environment topic placeholder.
-    static let apnsTopic = "com.assessment.app"
+    static let apnsTopic = "com.trailmap.app"
 
     /// Backend path that would register a device token once APNs is wired.
     static let deviceRegisterPath = "/api/v1/push/devices"
 
     /// UserDefaults key for the last stub alert id (debug only).
-    static let lastAlertIdKey = "assessment.push.lastAlertId"
+    static let lastAlertIdKey = "trailmap.push.lastAlertId"
 }

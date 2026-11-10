@@ -3,7 +3,7 @@
 **Scope:** Practical engineering controls required before calling this SaaS **complete**.  
 **Not a claim:** This is HIPAA-*ready* posture — not a BAA, audit attestation, or certification.
 
-Use as acceptance criteria during prep and assessment day. Infra stream owns Terraform defaults; app streams own auth, audit, and log hygiene.
+Use as acceptance criteria during prep and production launch. Infra stream owns Terraform defaults; app streams own auth, audit, and log hygiene.
 
 ## Controls
 
@@ -48,5 +48,5 @@ Use as acceptance criteria during prep and assessment day. Infra stream owns Ter
 ## Explicit non-goals (until separately scoped)
 
 - Formal HIPAA certification or third-party audit
-- Signed BAAs negotiated during the timed assessment
+- Signed BAAs negotiated during the production rollout
 - Full chaos / pen-test engagement

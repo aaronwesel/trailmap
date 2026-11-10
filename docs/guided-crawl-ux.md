@@ -1,6 +1,6 @@
 # Guided crawl UX (product deliverables)
 
-Assessments PDF extras on top of the graded .NET crawl core: landing, wizard, billing hints, Job Details value.
+Product UX on top of the .NET crawl core: landing, wizard, billing hints, Job Details value.
 
 ## Surfaces
 

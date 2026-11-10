@@ -8,7 +8,7 @@ Smoke notes for workstream C (growth + admin UI). React stays on Vite + TypeScri
 - Brand-first hero with register / sign-in CTAs (or **Open app** when already authenticated).
 - No PHI; marketing copy only.
 
-Smoke: `cd frontend && npm run dev` → open `/` → brand “Assessment” is the hero signal → CTAs navigate to `/register` and `/login`.
+Smoke: `cd frontend && npm run dev` → open `/` → brand “Trailmap” is the hero signal → CTAs navigate to `/register` and `/login`.
 
 ## Self-serve registration
 

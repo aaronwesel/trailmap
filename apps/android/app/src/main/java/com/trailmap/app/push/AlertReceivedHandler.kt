@@ -1,4 +1,4 @@
-package com.assessment.app.push
+package com.trailmap.app.push
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,7 +15,7 @@ import android.util.Log
  * Never log PHI — only opaque alert ids and non-clinical categories.
  */
 object AlertReceivedHandler {
-    private const val TAG = "AssessmentPush"
+    private const val TAG = "TrailmapPush"
 
     fun ensureChannel(context: Context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return

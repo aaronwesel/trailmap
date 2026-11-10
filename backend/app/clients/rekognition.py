@@ -2,7 +2,7 @@
 Amazon Rekognition client stub via boto3. Prefer IAM task role in ECS.
 
 Images and derived labels can be PHI/PII — keep `REKOGNITION_ENABLED=false`
-until assessment flows define retention, encryption, and logging rules.
+until production flows define retention, encryption, and logging rules.
 Never log image bytes or recognition results that could identify a person.
 
 Consent: use `detect_labels_for_subject` so Redis kill switches and per-subject
@@ -62,7 +62,7 @@ class RekognitionClientStub:
         _ = image_bytes
         logger.info("Rekognition detect_labels stub", extra={"max_labels": max_labels})
         client = self._get_client()
-        # Real call deferred; return empty until assessment AI stream enables it.
+        # Real call deferred; return empty until the AI integration track enables it.
         _ = client
         return []
 

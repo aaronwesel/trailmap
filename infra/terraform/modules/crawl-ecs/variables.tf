@@ -97,7 +97,7 @@ variable "worker_scale_in_cooldown_seconds" {
 
 variable "queue_depth_metric_namespace" {
   type    = string
-  default = "Crawl/Assessment"
+  default = "Crawl/Trailmap"
 }
 
 variable "queue_depth_metric_name" {

@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Assessment"
+rootProject.name = "Trailmap"
 include(":app")

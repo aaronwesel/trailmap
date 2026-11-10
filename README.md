@@ -1,20 +1,20 @@
-# assessment
+# Trailmap
 
-Job-based **web crawler** (.NET 8 API + Worker · RabbitMQ · Postgres · React) plus HIPAA-minded SaaS prep (FastAPI auth/billing · Terraform ECS sketch).
+**Trailmap Crawl** — job-based web crawler (.NET 8 API + Worker · RabbitMQ · Postgres · React) with a HIPAA-minded platform stack (FastAPI auth/billing · Terraform ECS sketch).
 
-**Graded path:** [docs/crawl-readme.md](docs/crawl-readme.md) — run, architecture, message schema, idempotency, retries, DLQ, Domain Link Ratio, PDF rubric priorities/cuts · [docs/crawl.md](docs/crawl.md) (API + engine details).
+**Crawl docs:** [docs/crawl-readme.md](docs/crawl-readme.md) — run, architecture, message schema, idempotency, retries, DLQ, Domain Link Ratio, roadmap · [docs/crawl.md](docs/crawl.md) (API + engine details).
 
 ## Monorepo layout
 
 | Path | Purpose |
 |------|---------|
-| `src/` | Graded .NET 8 crawl stack (`Crawl.Api`, `Crawl.Worker`, Domain, Infrastructure) |
+| `src/` | .NET 8 crawl stack (`Crawl.Api`, `Crawl.Worker`, Domain, Infrastructure) |
 | `tests/` | Crawl unit + HTML fixture integration tests |
-| `frontend/` | React/Vite — crawl console + prep auth UI |
-| `backend/` | FastAPI platform (auth, billing, flags) — side-by-side |
+| `frontend/` | React/Vite — crawl console + platform auth UI |
+| `backend/` | FastAPI platform (auth, billing, flags) |
 | `apps/android/` · `apps/ios/` | Mobile clients (platform auth) |
-| `infra/terraform/` | AWS IaC sketch (ECS, Aurora, Amazon MQ crawl modules) — **never apply from CI** |
-| `docs/` | Crawl rubric docs, HIPAA, runbooks |
+| `infra/terraform/` | AWS IaC sketch (ECS, Aurora, Amazon MQ crawl modules) — **no apply from CI** |
+| `docs/` | Crawl, HIPAA, operations runbooks |
 | `docker-compose.yml` | db, redis, rabbitmq, crawl-api, crawl-worker, frontend, platform api |
 
 ## Quick start (local)
@@ -35,9 +35,9 @@ Job-based **web crawler** (.NET 8 API + Worker · RabbitMQ · Postgres · React)
 
    | Service | Default URL / check |
    |---------|---------------------|
-| Crawl API | `GET http://localhost:8080/health` · Swagger `/swagger` · SignalR `/hubs/crawl-jobs` · `GET /api/ops/queue` |
-| Crawl Worker | `GET http://localhost:8081/health` · `GET /ops/queue` |
-| Frontend | `http://localhost:3000` (`/crawl`, `/crawl/history`) |
+   | Crawl API | `GET http://localhost:8080/health` · Swagger `/swagger` · SignalR `/hubs/crawl-jobs` · `GET /api/ops/queue` |
+   | Crawl Worker | `GET http://localhost:8081/health` · `GET /ops/queue` |
+   | Frontend | `http://localhost:3000` (`/crawl`, `/crawl/history`) |
    | RabbitMQ | `http://localhost:15672` (guest/guest by default) |
    | Platform API | `GET http://localhost:8000/health` |
    | Postgres | `app` + `crawl` databases on `localhost:5432` |
@@ -67,11 +67,11 @@ GitHub Actions (`.github/workflows/ci.yml`):
 
 ## Docs
 
-- [Crawl assessment README](docs/crawl-readme.md) — run, architecture, schema, idempotency, retries/DLQ, DLR, assessment PDF priorities (implemented/cut/next), cloud sketch
-- [Crawl API details](docs/crawl.md) — endpoints, queues, domain notes from the .NET stream
+- [Crawl README](docs/crawl-readme.md) — run, architecture, schema, idempotency, retries/DLQ, DLR, roadmap, cloud sketch
+- [Crawl API details](docs/crawl.md) — endpoints, queues, domain notes from the .NET stack
 - [Crawl cloud Terraform notes](infra/terraform/CRAWL_CLOUD.md) — ECS + Amazon MQ + Aurora (**no apply**)
 - [HIPAA engineering checklist](docs/hipaa-checklist.md) — required controls before calling anything complete (not a certification claim)
-- [Assessment-day runbook](docs/assessment-day-runbook.md) — parallel streams, health gates, demo order
+- [Operations runbook](docs/operations-runbook.md) — parallel streams, health gates, demo order
 - [Load balancing & scaling](docs/load-balancing.md) — ALB fan-out, API vs worker autoscaling
 - [Team management + Slack](docs/team-management.md) — org/team roles, JWT APIs, webhook vs Slack app
 - [Workstreams](docs/workstreams.md) — assign API / UI / infra / mobile / AI to developers
@@ -80,13 +80,13 @@ GitHub Actions (`.github/workflows/ci.yml`):
 - [Stripe billing (test mode)](docs/billing-stripe.md) — Checkout, Customer Portal, webhook smoke
 - [Contributing](CONTRIBUTING.md) — PR ownership and CODEOWNERS expectations
 
-## Stretch (not graded core)
+## Stretch (optional)
 
-- **Elastic workers + SignalR + distributed edge cases** — queue-backed `Crawl.Worker` scale-out (ECS/ASG sketch), Job Details live progress over SignalR (REST fallback), multi-worker claim/DLQ/politeness hardening. Narrative: [docs/crawl-readme.md](docs/crawl-readme.md) first/cut/next · details [docs/crawl.md](docs/crawl.md).
+- **Elastic workers + SignalR + distributed edge cases** — queue-backed `Crawl.Worker` scale-out (ECS/ASG sketch), Job Details live progress over SignalR (REST fallback), multi-worker claim/DLQ/politeness hardening. Narrative: [docs/crawl-readme.md](docs/crawl-readme.md) roadmap · details [docs/crawl.md](docs/crawl.md).
 - AI-assisted **crawl incident monitoring + remediation** (backoff / politeness / optional egress proxy hop / optional email alerts) is documented in [docs/crawl-readme.md](docs/crawl-readme.md#stretch-ai-crawl-incident-monitor-ops--observability). It does **not** replace deterministic crawl parsing, Domain Link Ratio, or the RabbitMQ job pipeline.
 
 ## Explicit non-goals
 
-- No `terraform apply` in prep or CI (cloud sketch only)
+- No `terraform apply` in CI without an approved change window (cloud sketch only)
 - No committed secrets or PHI sample data
 - AI must not own HTML link parsing or Domain Link Ratio

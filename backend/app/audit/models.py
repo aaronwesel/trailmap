@@ -1,7 +1,7 @@
 """
 Immutable audit-log rows — who / what / when without PHI payloads.
 
-Assessment / HIPAA notes:
+Trailmap / HIPAA notes:
 - Actors and resources are opaque UUIDs (JWT `sub`, resource ids) — never emails.
 - `metadata_json` is allowlisted machine codes only; reject free-text PHI at write time.
 - No update/delete API: append-only for evidentiary integrity. Retention/purge is an

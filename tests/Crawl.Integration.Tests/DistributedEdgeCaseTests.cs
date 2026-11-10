@@ -31,11 +31,11 @@ public class DistributedEdgeCaseTests
     public void Robots_crawl_delay_preferred_over_default()
     {
         var rules = RobotsTxtRules.Parse("""
-            User-agent: CrawlAssessmentBot
+            User-agent: TrailmapCrawlBot
             Crawl-delay: 2.5
             Allow: /
             """);
-        var delay = rules.GetCrawlDelay("CrawlAssessmentBot");
+        var delay = rules.GetCrawlDelay("TrailmapCrawlBot");
         Assert.Equal(TimeSpan.FromSeconds(2.5), delay);
         Assert.True(delay > TimeSpan.FromMilliseconds(250));
     }

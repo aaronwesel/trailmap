@@ -11,13 +11,13 @@ python3 -m pip install -q -r requirements.txt
 
 export ENVIRONMENT=test
 export SECRET_KEY=e2e-local-secret-not-for-prod
-export DATABASE_URL=sqlite:////tmp/assessment-auth-e2e.db
+export DATABASE_URL=sqlite:////tmp/trailmap-auth-e2e.db
 export REDIS_URL="${REDIS_URL:-redis://localhost:6379/15}"
 export RATE_LIMIT_ENABLED=false
 export GOOGLE_CLIENT_ID=test-google-client-id.apps.googleusercontent.com
 export MICROSOFT_CLIENT_ID=00000000-0000-0000-0000-000000000001
 
-rm -f /tmp/assessment-auth-e2e.db
+rm -f /tmp/trailmap-auth-e2e.db
 
 python3 -m uvicorn app.main:app --host 127.0.0.1 --port 8765 &
 API_PID=$!

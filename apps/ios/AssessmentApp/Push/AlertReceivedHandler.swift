@@ -9,7 +9,7 @@ import OSLog
 /// Never log PHI — only opaque alert ids and non-clinical categories.
 enum AlertReceivedHandler {
     private static let logger = Logger(
-        subsystem: "com.assessment.app",
+        subsystem: "com.trailmap.app",
         category: "push"
     )
 

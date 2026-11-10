@@ -13,7 +13,7 @@ public static partial class CrawlAlertTemplates
         if (!AlertCodePattern().IsMatch(alertCode))
             alertCode = "crawl_incident";
 
-        var subject = $"[assessment] Crawl alert: {alertCode}";
+        var subject = $"[Trailmap] Crawl alert: {alertCode}";
         var body =
             $"alert_code={alertCode}\n" +
             $"occurred_at={incident.CreatedAt:yyyy-MM-dd HH:mm:ss} UTC\n" +

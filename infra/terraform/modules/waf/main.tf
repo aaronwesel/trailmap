@@ -1,4 +1,4 @@
-# WAF placeholder: managed common rule set. Tune on assessment day.
+# WAF placeholder: managed common rule set. Tune in production.
 
 resource "aws_wafv2_web_acl" "this" {
   count = var.enable_waf ? 1 : 0

@@ -1,6 +1,6 @@
 # Crawl cloud sketch (NO APPLY)
 
-Graded crawler runs as **the same .NET Crawl.Api + Crawl.Worker** on AWS. Local Compose is the demo path; this document is the production shape for **reading job results from the cloud API**.
+Trailmap Crawl runs as **the same .NET Crawl.Api + Crawl.Worker** on AWS. Local Compose is the demo path; this document is the production shape for **reading job results from the cloud API**.
 
 ## Mapping
 
@@ -22,7 +22,7 @@ Graded crawler runs as **the same .NET Crawl.Api + Crawl.Worker** on AWS. Local 
 | `modules/crawl-ecs/` | Sketch — task defs for crawl-api / crawl-worker, env for MQ + Aurora, worker App Auto Scaling on queue depth |
 | Prep `modules/ecs`, `alb`, `rds`, `ecr`, … | Existing platform scaffold; **reuse patterns**, do not dual-apply blindly |
 
-Root `main.tf` does **not** instantiate crawl modules yet — avoids accidental apply coupling. Wire on assessment day after Compose is green and apply is authorized.
+Root `main.tf` does **not** instantiate crawl modules yet — avoids accidental apply coupling. Wire in production after Compose is green and apply is authorized.
 
 ## Operator access to results
 

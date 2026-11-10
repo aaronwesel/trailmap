@@ -13,21 +13,21 @@ resource "random_password" "master" {
   override_special = "!#$%&*()-_=+[]{}<>:?"
 }
 
-# Skeleton uses managed master password generation locally; on assessment day
+# Skeleton uses managed master password generation locally; in production
 # prefer Secrets Manager integration / manage_master_user_password where available.
 resource "aws_rds_cluster" "this" {
   cluster_identifier = "${var.name_prefix}-aurora"
   engine             = "aurora-postgresql"
   engine_version     = var.engine_version
   database_name      = var.database_name
-  master_username    = "assessment_admin"
+  master_username    = "trailmap_admin"
   master_password    = random_password.master.result
 
   db_subnet_group_name   = aws_db_subnet_group.this.name
   vpc_security_group_ids = [var.security_group_id]
 
   # Encryption at rest (HIPAA-ready): AES via customer CMK — do not disable.
-  # In-transit: require SSL on assessment-day DATABASE_URL (sslmode=require).
+  # In-transit: require SSL on production launch DATABASE_URL (sslmode=require).
   storage_encrypted = true
   kms_key_id        = var.kms_key_arn
 
@@ -35,7 +35,7 @@ resource "aws_rds_cluster" "this" {
   preferred_backup_window      = "03:00-04:00"
   preferred_maintenance_window = "sun:04:00-sun:05:00"
   copy_tags_to_snapshot        = true
-  deletion_protection          = false # enable for prod on assessment day
+  deletion_protection          = false # enable for prod in production
   skip_final_snapshot          = true  # flip false + final_snapshot_identifier for prod
 
   enabled_cloudwatch_logs_exports = ["postgresql"]

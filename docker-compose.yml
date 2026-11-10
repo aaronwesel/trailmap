@@ -64,12 +64,12 @@ services:
     volumes:
       - ./infra/otel/otel-collector-config.yaml:/etc/otelcol/config.yaml:ro
 
-  # Platform A (prep FastAPI) — host network → published db/redis ports.
+  # Platform A (FastAPI platform) — host network → published db/redis ports.
   api:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    image: assessment-api:local
+    image: trailmap-api:local
     network_mode: host
     restart: unless-stopped
     environment:
@@ -127,7 +127,7 @@ services:
     build:
       context: .
       dockerfile: src/Crawl.Api/Dockerfile
-    image: assessment-crawl-api:local
+    image: trailmap-crawl-api:local
     network_mode: host
     restart: unless-stopped
     environment:
@@ -171,7 +171,7 @@ services:
     build:
       context: .
       dockerfile: src/Crawl.Worker/Dockerfile
-    image: assessment-crawl-worker:local
+    image: trailmap-crawl-worker:local
     network_mode: host
     restart: unless-stopped
     environment:
@@ -226,7 +226,7 @@ services:
       args:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8000}
         VITE_CRAWL_API_URL: ${VITE_CRAWL_API_URL:-http://localhost:8080}
-    image: assessment-frontend:local
+    image: trailmap-frontend:local
     network_mode: host
     restart: unless-stopped
     # nginx listens on 3000 (see frontend/nginx.conf)

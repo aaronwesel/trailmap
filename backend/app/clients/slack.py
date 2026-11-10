@@ -168,7 +168,7 @@ class IncomingWebhookSlackClient:
         safe_stream = _require_safe_token(workstream, field="workstream")
         safe_role = _require_safe_token(role, field="role")
         text = (
-            f"[assessment] team event={safe_event} "
+            f"[Trailmap] team event={safe_event} "
             f"team_id={safe_team} workstream={safe_stream} role={safe_role}"
         )
         return self._post_text(text)
@@ -185,7 +185,7 @@ class IncomingWebhookSlackClient:
         safe_event = _require_safe_token(event, field="event")
         safe_env = _require_safe_token(environment, field="environment")
         text = (
-            f"[assessment] deploy/alert event={safe_event} "
+            f"[Trailmap] deploy/alert event={safe_event} "
             f"env={safe_env} severity={severity}"
         )
         return self._post_text(text)
@@ -204,7 +204,7 @@ class IncomingWebhookSlackClient:
             raise AlertTemplateError("pr_number out of allowed range")
         pr_part = f" pr=#{pr_number}" if pr_number is not None else ""
         text = (
-            f"[assessment] pr_handoff event={safe_event} "
+            f"[Trailmap] pr_handoff event={safe_event} "
             f"workstream={safe_stream}{pr_part}"
         )
         return self._post_text(text)

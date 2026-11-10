@@ -12,11 +12,11 @@ terraform {
     }
   }
 
-  # PREP: local state only. Remote backend (S3 + DynamoDB) is assessment-day only.
+  # PREP: local state only. Remote backend (S3 + DynamoDB) is production launch only.
   # When enabling: bucket must use SSE-KMS (CMK) + block public access; keep encrypt=true.
   # backend "s3" {
   #   bucket         = "CHANGE_ME-tf-state"
-  #   key            = "assessment/terraform.tfstate"
+  #   key            = "trailmap/terraform.tfstate"
   #   region         = "eu-west-1"
   #   dynamodb_table = "CHANGE_ME-tf-locks"
   #   encrypt        = true

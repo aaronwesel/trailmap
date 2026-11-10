@@ -27,7 +27,7 @@ public static class ScaleSignalsEndpoints
                     healthy = snap.Healthy,
                     error = snap.Error,
                     atUtc = snap.AtUtc,
-                    note = "Primary scale path: add Crawl.Worker consumers on RabbitMQ (ECS desired_count / ASG). Per-job EC2 provisioner is stretch-next, not graded core."
+                    note = "Primary scale path: add Crawl.Worker consumers on RabbitMQ (ECS desired_count / ASG). Per-job EC2 provisioner is stretch-next, not core product path."
                 });
             })
             .WithName("GetQueueDepth")

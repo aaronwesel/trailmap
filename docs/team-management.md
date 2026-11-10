@@ -1,6 +1,6 @@
 # Team management + optional Slack
 
-Goal: parcel assessment work to different developers with clear ownership, and optionally notify a Slack channel for invites, deploy/alerts, and PR handoffs — **without ever putting PHI in Slack**.
+Goal: parcel engineering work to different developers with clear ownership, and optionally notify a Slack channel for invites, deploy/alerts, and PR handoffs — **without ever putting PHI in Slack**.
 
 ## Domain model (backend stubs)
 
@@ -62,7 +62,7 @@ When disabled (default), the Slack client is a no-op. When enabled, the app post
 
 | Approach | Pros | Cons | When to use |
 |----------|------|------|-------------|
-| **Incoming Webhook** (this scaffold) | One secret URL; no OAuth; enough for channel posts | No interactive buttons, no Events API, one channel per URL (unless multiple webhooks) | Prep + early assessment handoffs/alerts |
+| **Incoming Webhook** (this scaffold) | One secret URL; no OAuth; enough for channel posts | No interactive buttons, no Events API, one channel per URL (unless multiple webhooks) | Local dev + early team handoffs/alerts |
 | **Slack app** (Bot Token + Events / Interactivity) | Slash commands, modals, per-user DMs, richer handoff UX | App install, scopes, rotation, more IAM/secrets surface | After webhook proves useful; when interactive assign/ack is needed |
 
 Migration path: keep the `SlackNotifier` protocol; swap `IncomingWebhookSlackClient` for a Bot API client without changing team service call sites. Document the new bot token in Secrets Manager the same way as the webhook.

@@ -3,7 +3,7 @@
  *
  * Why sessionStorage (not localStorage): tokens clear when the tab closes,
  * reducing XSS persistence risk on shared machines. Still not a substitute for
- * HttpOnly cookies in a full production hardening pass — assessment scaffold.
+ * HttpOnly cookies in a full production hardening pass.
  *
  * loginWithTokens: after any provider returns a TokenPair, fetch `/me` and persist.
  * logout: best-effort API revoke (Redis blacklist) then clear local session.
@@ -21,8 +21,8 @@ import type { AuthContextValue, AuthProvider, AuthTokens, AuthUser } from './typ
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
-const USER_KEY = 'assessment.auth.user'
-const TOKENS_KEY = 'assessment.auth.tokens'
+const USER_KEY = 'trailmap.auth.user'
+const TOKENS_KEY = 'trailmap.auth.tokens'
 
 function readStoredUser(): AuthUser | null {
   try {

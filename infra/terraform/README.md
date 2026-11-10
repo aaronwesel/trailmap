@@ -4,7 +4,7 @@ HIPAA-ready engineering controls are defaulted **on** in this scaffold (encrypti
 
 ## DO NOT APPLY
 
-| Allowed now | Forbidden until assessment day |
+| Allowed now | Forbidden before production apply is authorized |
 |-------------|-------------------------------|
 | `terraform fmt -recursive` | `terraform apply` |
 | `terraform init -backend=false` | `terraform destroy` |
@@ -74,8 +74,8 @@ See [`docs/load-balancing.md`](../../docs/load-balancing.md). Summary:
 
 ## DeepSeek / egress
 
-DeepSeek is an external API. Keep it feature-flagged and non-PHI until vendor BAA posture is clear. Egress allowlisting is an assessment-day fill-in (security group / NAT / proxy policy), not applied here.
+DeepSeek is an external API. Keep it feature-flagged and non-PHI until vendor BAA posture is clear. Egress allowlisting is an production launch fill-in (security group / NAT / proxy policy), not applied here.
 
 ## Backend state
 
-Default is local (prep). For assessment day, switch to a remote state backend (S3 + DynamoDB lock) in `versions.tf` / `backend` block — still only after apply is authorized.
+Default is local (prep). For production launch, switch to a remote state backend (S3 + DynamoDB lock) in `versions.tf` / `backend` block — still only after apply is authorized.

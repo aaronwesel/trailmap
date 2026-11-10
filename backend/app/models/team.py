@@ -15,7 +15,7 @@ from sqlmodel import Field, SQLModel
 
 
 class TeamRole(str, Enum):
-    """Membership roles for parceling assessment work to developers.
+    """Membership roles for parceling engineering work to developers.
 
     - owner: full team lifecycle (create/archive, invite, role changes)
     - admin: invite + assign streams; cannot delete the team
@@ -38,7 +38,7 @@ class Team(SQLModel, table=True):
     organization_id: str = Field(foreign_key="organizations.id", index=True, max_length=36)
     name: str = Field(max_length=255, index=True)
     # Workstream label: api | ui | infra | mobile | ai — free string in stub
-    # so assessment-day prompts can invent streams without a migration.
+    # so production launch prompts can invent streams without a migration.
     workstream: str = Field(default="general", max_length=64, index=True)
     description: Optional[str] = Field(default=None, max_length=512)
     created_by_user_id: str = Field(max_length=36, index=True)

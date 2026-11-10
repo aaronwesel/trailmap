@@ -1,5 +1,5 @@
 [project]
-name = "assessment-backend"
+name = "trailmap-backend"
 version = "0.1.0"
 description = "FastAPI SaaS scaffold (auth/RBAC/AI stubs)"
 requires-python = ">=3.12"

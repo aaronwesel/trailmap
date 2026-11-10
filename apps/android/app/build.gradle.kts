@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.assessment.app"
+    namespace = "com.trailmap.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.assessment.app"
+        applicationId = "com.trailmap.app"
         minSdk = 26
         targetSdk = 35
         versionCode = 1

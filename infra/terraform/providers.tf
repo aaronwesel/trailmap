@@ -7,7 +7,7 @@ provider "aws" {
       Environment        = var.environment
       ManagedBy          = "terraform"
       HipaaReadyScaffold = "true"
-      TerraformApplyGate = "forbidden-until-assessment-day"
+      TerraformApplyGate = "manual-apply-only"
     })
   }
 }

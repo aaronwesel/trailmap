@@ -34,7 +34,7 @@ def decrypt_totp_secret(encrypted: str) -> str:
     return decrypt_field(encrypted)
 
 
-def provisioning_uri(*, secret: str, email: str, issuer: str = "Assessment") -> str:
+def provisioning_uri(*, secret: str, email: str, issuer: str = "Trailmap") -> str:
     """otpauth:// URI for authenticator apps. Do not log the URI (contains secret)."""
     totp = pyotp.TOTP(secret)
     return totp.provisioning_uri(name=email, issuer_name=issuer)

@@ -1,64 +1,41 @@
-# Assessment Android app (scaffold)
+# Trailmap Android app
 
-Kotlin + Jetpack Compose stub that shares the FastAPI backend with the web and iOS clients.
+Kotlin + Jetpack Compose mobile client for the Trailmap platform API (password login stub; FCM push wiring is TODO).
 
-**Not App Store / Play Store ready** — login and API wiring are placeholders only.
+## Prerequisites
 
-## Open in Android Studio
+- Android Studio Ladybug or newer
+- JDK 17
+- Platform API reachable from the emulator (`10.0.2.2:8000` maps to host `localhost:8000`)
 
-1. Install [Android Studio](https://developer.android.com/studio) (Giraffe+ / AGP 8.x).
-2. **File → Open** → select this `apps/android` directory.
-3. Let Gradle sync; create an emulator or attach a device (API 26+).
-4. Run the `app` configuration.
+## Open the project
 
-If the Gradle Wrapper JAR is missing, use Android Studio’s “Use Gradle from: ‘gradle-wrapper.properties’” sync, or run `gradle wrapper` once from this folder.
+1. Android Studio → **Open** → select `apps/android/`.
+2. Let Gradle sync finish.
+3. Run on an emulator or device.
 
-## Point at the FastAPI backend
+## API base URL
 
-Default base URL is set in `app/src/main/java/com/assessment/app/config/ApiConfig.kt`:
+Default base URL is set in `app/src/main/java/com/trailmap/app/config/ApiConfig.kt`:
 
-| Environment | Suggested `BASE_URL` |
-|-------------|----------------------|
-| Emulator → host machine Compose/API | `http://10.0.2.2:8000` |
-| Physical device → host on LAN | `http://<your-lan-ip>:8000` |
-| Staging / ALB | `https://api.example.com` |
-
-Also override at build time with a Gradle property (see `app/build.gradle.kts`):
-
-```bash
-./gradlew :app:assembleDebug -PAPI_BASE_URL=http://10.0.2.2:8000
+```kotlin
+const val BASE_URL = "http://10.0.2.2:8000"
 ```
 
-Cleartext HTTP to the emulator host is allowed only for debug via `network_security_config.xml`. Use HTTPS for anything beyond local scaffold.
+Override at build time with `API_BASE_URL` in `gradle.properties` if needed.
 
-## Login stubs (not wired)
+## Push alerts (stub)
 
-`LoginScreen` shows placeholders for:
+`AlertReceivedHandler` defines the channel and a single entry point for alert delivery. Wire FCM → `onAlertReceived` when credentials exist.
 
-- **Google One Tap** — TODO: Credential Manager / GIS; exchange ID token with backend `/auth/...`
-- **Microsoft One Tap** — TODO: MSAL; exchange with backend
-- **Email / password** — TODO: POST credentials to FastAPI JWT endpoints
-
-Do not ship with real client IDs or secrets in source; inject via `local.properties` or CI secrets when OAuth apps exist.
-
-## Push stub (FCM)
-
-`push/PushConfig.kt` holds FCM project/sender placeholders (no secrets).  
-`push/AlertReceivedHandler.kt` is the single “alert received” path — call it from a future `FirebaseMessagingService` (or debug UI) with an opaque alert id. Payloads must never include PHI.
-
-## Package layout
+## Layout
 
 ```
-app/src/main/java/com/assessment/app/
-  AssessmentApp.kt          Application entry
-  MainActivity.kt           Single-activity host
-  config/ApiConfig.kt       API base URL
-  push/PushConfig.kt        FCM config placeholders
-  push/AlertReceivedHandler.kt  Alert-received stub path
-  ui/login/LoginScreen.kt   Login placeholders
-  ui/theme/Theme.kt         Minimal Material 3 theme
+app/src/main/java/com/trailmap/app/
+  TrailmapApp.kt          Application entry
+  MainActivity.kt         Compose host
+  config/ApiConfig.kt     API base URL
+  push/                   Alert channel + handler stubs
+  ui/login/LoginScreen.kt Password login shell
+  ui/theme/Theme.kt       Material 3 theme
 ```
-
-## Shared backend contract
-
-Expect the same auth surface as web/iOS: JWT (or session) after password or One Tap token exchange. Keep `ApiConfig.BASE_URL` aligned with `apps/ios` and the frontend env when demos move off localhost.

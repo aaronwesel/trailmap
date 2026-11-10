@@ -19,7 +19,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                Text("Assessment")
+                Text("Trailmap")
                     .font(.largeTitle.weight(.semibold))
                 Text("Sign in (scaffold)")
                     .font(.subheadline)

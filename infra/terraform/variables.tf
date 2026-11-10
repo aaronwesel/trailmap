@@ -1,7 +1,7 @@
 variable "project_name" {
   description = "Short project name used in resource naming"
   type        = string
-  default     = "assessment"
+  default     = "trailmap"
 }
 
 variable "environment" {
@@ -28,7 +28,7 @@ variable "availability_zones" {
 }
 
 variable "acm_certificate_arn" {
-  description = "ACM certificate ARN for ALB HTTPS (placeholder until assessment day)"
+  description = "ACM certificate ARN for ALB HTTPS (placeholder before production apply is authorized)"
   type        = string
   default     = ""
 }
@@ -150,7 +150,7 @@ variable "db_instance_class" {
 variable "db_name" {
   description = "Initial database name"
   type        = string
-  default     = "assessment"
+  default     = "trailmap"
 }
 
 variable "redis_node_type" {
@@ -172,13 +172,13 @@ variable "enable_waf" {
 }
 
 variable "enable_ses" {
-  description = "Create SES identity/config-set placeholders (DO NOT apply until assessment day)"
+  description = "Create SES identity/config-set placeholders (DO NOT apply before production apply is authorized)"
   type        = bool
   default     = true
 }
 
 variable "ses_domain_name" {
-  description = "Domain for SES domain identity (placeholder until assessment day)"
+  description = "Domain for SES domain identity (placeholder before production apply is authorized)"
   type        = string
   default     = ""
 }

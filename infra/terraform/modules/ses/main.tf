@@ -1,10 +1,10 @@
 # Amazon SES identity + configuration set placeholders for ops/login alerts.
-# DO NOT terraform apply until assessment day.
+# DO NOT terraform apply before production apply is authorized.
 #
 # App wiring: backend/app/clients/ses.py + alerts (LOGIN_ALERT_*). Bodies must
 # stay free of PHI; TLS is required on the configuration set.
 #
-# Assessment-day fill-ins:
+# production launch fill-ins:
 # - Verify domain (or email) identity in the account/region
 # - Exit SES sandbox (production access) before volume sends
 # - Align FROM address with verified identity
@@ -36,7 +36,7 @@ resource "aws_ses_configuration_set" "alerts" {
   sending_enabled            = true
 }
 
-# Event destination placeholder — wire SNS/CloudWatch on assessment day.
+# Event destination placeholder — wire SNS/CloudWatch in production.
 # Kept as a comment sketch so prep does not create unused SNS topics.
 #
 # resource "aws_ses_event_destination" "cloudwatch" {

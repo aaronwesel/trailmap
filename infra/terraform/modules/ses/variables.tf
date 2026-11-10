@@ -3,13 +3,13 @@ variable "name_prefix" {
 }
 
 variable "enable_ses" {
-  description = "Create SES identity/config-set placeholders (still DO NOT apply until assessment day)"
+  description = "Create SES identity/config-set placeholders (still DO NOT apply before production apply is authorized)"
   type        = bool
   default     = true
 }
 
 variable "domain_name" {
-  description = "Domain to verify for SES sending (placeholder until assessment day)"
+  description = "Domain to verify for SES sending (placeholder before production apply is authorized)"
   type        = string
   default     = ""
 }

@@ -9,7 +9,7 @@
 # Network: private_subnet_ids across ≥2 AZs. API tasks register their ENI IPs
 # into the ALB target group (stickiness OFF → even fan-out).
 #
-# DO NOT terraform apply until assessment day.
+# DO NOT terraform apply before production apply is authorized.
 
 resource "aws_ecs_cluster" "this" {
   name = "${var.name_prefix}-cluster"

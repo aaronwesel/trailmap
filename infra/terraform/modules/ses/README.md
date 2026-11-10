@@ -2,7 +2,7 @@
 
 Creates optional SES domain/email identity and a configuration set for alert mail.
 
-**DO NOT `terraform apply` until assessment day.**
+**DO NOT `terraform apply` before production apply is authorized.**
 
 ## CloudWatch metrics notes
 

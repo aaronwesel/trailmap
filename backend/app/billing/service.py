@@ -30,7 +30,7 @@ class BillingServiceError(Exception):
 def _integration_identifier() -> str:
     """Tag Checkout flows in the Dashboard (API ≥ 2026-03-25); 8 random letters suffix."""
     suffix = "".join(secrets.choice(string.ascii_lowercase) for _ in range(8))
-    return f"assessment_sub_{suffix}"
+    return f"trailmap_sub_{suffix}"
 
 
 def billing_configured(settings: Settings | None = None) -> bool:

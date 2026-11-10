@@ -1,7 +1,7 @@
 """
 Stripe SDK wrapper — always use StripeClient (never global stripe.api_key).
 
-Test-mode keys only in prep (`sk_test_` / `rk_test_` / `pk_test_`). Prefer a
+Test-mode keys only in local development (`sk_test_` / `rk_test_` / `pk_test_`). Prefer a
 restricted API key (RAK) with least privilege for Checkout + Customers +
 Subscriptions + Billing Portal in non-local environments.
 """

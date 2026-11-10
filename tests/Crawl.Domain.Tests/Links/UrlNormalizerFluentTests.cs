@@ -4,7 +4,7 @@ using FluentAssertions;
 namespace Crawl.Domain.Tests.Links;
 
 /// <summary>
-/// Assessment mastery edge cases: relative paths, query/fragment, mailto/tel, zero-link DLR.
+/// Trailmap crawl edge cases: relative paths, query/fragment, mailto/tel, zero-link DLR.
 /// </summary>
 public class UrlNormalizerFluentTests
 {

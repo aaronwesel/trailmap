@@ -1,7 +1,7 @@
 # CI: platform FastAPI + Crawl .NET + frontend + docker + terraform fmt/validate.
 # No terraform apply. No cloud secrets required.
 
-name: ci
+name: Trailmap CI
 
 on:
   push:

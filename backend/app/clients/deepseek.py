@@ -3,7 +3,7 @@ DeepSeek client interface. Feature flag OFF by default; never send PHI in prompt
 
 Why a stub + disabled default: AI calls are a HIPAA risk surface (prompts can
 leak patient content to a third party). Keep `DEEPSEEK_ENABLED=false` until
-assessment AI flows define allowlisted, de-identified prompt shapes.
+production AI flows define allowlisted, de-identified prompt shapes.
 
 Consent: callers that process subject data must also pass `require_deepseek_consent`
 (see `app.consent.gate`) before invoking `complete`. The gated helper
@@ -72,7 +72,7 @@ class HttpDeepSeekClient(DeepSeekClient):
     def complete(self, prompt: str, *, model: str = "deepseek-chat") -> str:
         if not self.is_enabled():
             raise DeepSeekError("DeepSeek is disabled, kill-switched, or API key missing")
-        # Placeholder: real httpx call lands when assessment AI stream enables it.
+        # Placeholder: real httpx call lands when the AI integration track enables it.
         # HIPAA: never log prompt content.
         _ = prompt
         logger.info("DeepSeek complete stub invoked", extra={"model": model})

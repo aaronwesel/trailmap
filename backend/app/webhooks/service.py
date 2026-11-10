@@ -137,9 +137,9 @@ def deliver_one(
     signature = sign_body(body, secret=secret)
     headers = {
         "Content-Type": "application/json",
-        "X-Assessment-Signature": signature,
-        "X-Assessment-Event": row.event_type,
-        "X-Assessment-Delivery": row.id,
+        "X-Trailmap-Signature": signature,
+        "X-Trailmap-Event": row.event_type,
+        "X-Trailmap-Delivery": row.id,
     }
 
     post = http_post or _default_http_post

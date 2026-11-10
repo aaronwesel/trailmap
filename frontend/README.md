@@ -1,6 +1,6 @@
 # Frontend
 
-React + Vite + TypeScript auth shell for the assessment prep scaffold.
+React + Vite + TypeScript auth shell for the Trailmap platform shell.
 
 ## What’s included
 

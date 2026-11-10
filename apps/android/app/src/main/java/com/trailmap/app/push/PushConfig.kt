@@ -1,4 +1,4 @@
-package com.assessment.app.push
+package com.trailmap.app.push
 
 /**
  * FCM / push configuration placeholders.
@@ -19,9 +19,9 @@ object PushConfig {
     const val FCM_SENDER_ID: String = "REPLACE_ME_FCM_SENDER_ID"
 
     /** Channel used for the scaffold "alert received" notification. */
-    const val ALERT_CHANNEL_ID: String = "assessment_alerts"
+    const val ALERT_CHANNEL_ID: String = "trailmap_alerts"
 
-    const val ALERT_CHANNEL_NAME: String = "Assessment alerts"
+    const val ALERT_CHANNEL_NAME: String = "Trailmap alerts"
 
     /**
      * Backend path that would register a device token once FCM is wired.

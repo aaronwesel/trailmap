@@ -1,5 +1,5 @@
-# Root wiring for the assessment AWS scaffold (HIPAA-ready defaults).
-# DO NOT terraform apply until assessment day (see README.md).
+# Root wiring for the Trailmap AWS scaffold (HIPAA-ready defaults).
+# DO NOT terraform apply before production apply is authorized (see README.md).
 #
 # Dependency sketch:
 #   KMS → encrypts RDS / Redis / Secrets / CloudWatch

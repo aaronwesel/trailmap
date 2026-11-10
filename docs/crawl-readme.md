@@ -1,9 +1,9 @@
-# Job-based web crawler (graded assessment)
+# Trailmap Crawl — job-based web crawler
 
 .NET 8 **Crawl.Api** + **Crawl.Worker**, RabbitMQ, PostgreSQL, React Start / Details / History.  
-Prep FastAPI/auth/billing stays side-by-side as a differentiator — it is **not** a C#→Python crawl shim.
+FastAPI platform/auth/billing stays side-by-side as a differentiator — it is **not** a C#→Python crawl shim.
 
-Companion API cheat-sheet: [crawl.md](crawl.md). Plan: Project store `docs/technical-assessment-plan.md`.
+Companion API cheat-sheet: [crawl.md](crawl.md).
 
 ---
 
@@ -157,9 +157,9 @@ Operator: inspect DLQ in RabbitMQ management UI; replay is deliberate (not auto)
 
 ---
 
-## Priorities (assessment PDF rubric)
+## Product roadmap
 
-Maps the home-assignment **implemented first / cut / next** trade-offs from the Technical Assessment PDF (rubric). Same headings reviewers expect in README.
+**Shipped first / defer / next** trade-offs for Trailmap Crawl releases.
 
 ### Implemented first — and why
 
@@ -167,20 +167,20 @@ Maps the home-assignment **implemented first / cut / next** trade-offs from the 
 |----------|-----------|
 | Domain tests — `UrlNormalizer` + **Domain Link Ratio** | Wrong graph math invalidates the whole demo; cheap to test; blocks API/UI lies about ratios. |
 | API + Postgres — jobs/pages/edges, create/status/tree/history/cancel/health | Contract the UI and worker share; persistence proves idempotent schema before broker load. |
-| Worker + RabbitMQ — consume, fetch, parse, upsert, retries/DLQ | Rubric’s async boundary; without at-least-once + DLQ the job model is incomplete. |
-| React Start / Details / History (PDF flow) | End-to-end proof; Job Details uses SignalR with poll fallback. |
-| Docker Compose + this README + CI | One-command repro + gates on `dotnet test` / docker builds — submission hygiene. |
+| Worker + RabbitMQ — consume, fetch, parse, upsert, retries/DLQ | Async boundary; without at-least-once + DLQ the job model is incomplete. |
+| React Start / Details / History | End-to-end product flow; Job Details uses SignalR with poll fallback. |
+| Docker Compose + this README + CI | One-command local repro + gates on `dotnet test` / docker builds. |
 | Queue-backed elastic workers + claim/DLQ edge hardening | Long jobs scale by adding consumers; multi-worker safe; ops queue depth signals. |
 
 ### Cut if needed — and why
 
 | Cut | Why it was deferrable |
 |-----|------------------------|
-| Per-job ephemeral EC2 provisioner | Stretch-next; ECS/ASG consumers on RabbitMQ fit the assessment architecture better. |
-| `terraform apply` / live AWS cutover | **Forbidden** in prep/CI anyway; sketches (`CRAWL_CLOUD.md`, modules + `autoscaling.tf`) document scale without account risk. |
+| Per-job ephemeral EC2 provisioner | Stretch-next; ECS/ASG consumers on RabbitMQ fit the Trailmap architecture better. |
+| `terraform apply` / live AWS cutover | **Forbidden** in local development/CI anyway; sketches (`CRAWL_CLOUD.md`, modules + `autoscaling.tf`) document scale without account risk. |
 | Salesforce live webhook, Rekognition screenshots | Role “much more” — interfaces/outbox stubs OK; live CRM/OCR needs creds and ops time. |
 | Strong SSRF allowlist | Known production gap; robots + politeness + redirect limits shipped first for crawl correctness. |
-| PDF / document link extraction | HTML-only rubric; sniff rejects `%PDF` bodies (see tests) — parsing PDFs is a different product surface. |
+| PDF / document link extraction | HTML-only v1; sniff rejects `%PDF` bodies (see tests) — parsing PDFs is a different product surface. |
 
 ### Next with more time
 
@@ -190,7 +190,7 @@ Maps the home-assignment **implemented first / cut / next** trade-offs from the 
 | X12/FHIR integration path (not a weekend EDI engine) | Honest senior scope — document contracts, don’t fake claims adjudication. |
 | Wire CW metric publisher from `/api/ops/queue` → live Amazon MQ ASG | Sketch exists; needs authorized apply + broker metrics IAM. |
 | Ephemeral scale-out host pool that drains then terminates | Operator-runnable next after ECS desired_count elasticity. |
-| Vault-backed assisted login + full audit | Security-sensitive; must not block graded HTML crawl. |
+| Vault-backed assisted login + full audit | Security-sensitive; must not block core HTML crawl. |
 | SSRF allowlist + optional JS render / PDF text extract | Production hardening beyond timed HTML depth crawl. |
 
 ---
@@ -222,7 +222,7 @@ Release/rollback (cloud day): bake immutable image tags → ECS new task definit
 
 ## Stretch: AI crawl incident monitor (ops / observability)
 
-**Label: stretch** — not required for the graded crawl path. Deterministic .NET still owns HTML link parsing, Domain Link Ratio, retries/DLQ, and the RabbitMQ job pipeline. This overlay strengthens the **RCM portal-ops** story: when payer-like sites rate-limit, time out, or hard-block the crawler, an operator gets structured incidents plus safe, configurable remediations (the same class of knobs you’d tune for eligibility portal scraping).
+**Label: stretch** — not required for the core crawl path. Deterministic .NET still owns HTML link parsing, Domain Link Ratio, retries/DLQ, and the RabbitMQ job pipeline. This overlay strengthens the **RCM portal-ops** story: when payer-like sites rate-limit, time out, or hard-block the crawler, an operator gets structured incidents plus safe, configurable remediations (the same class of knobs you’d tune for eligibility portal scraping).
 
 | Piece | Behavior |
 |-------|----------|

@@ -15,7 +15,7 @@ from sqlmodel import Field, SQLModel
 class Organization(SQLModel, table=True):
     """Tenant container so workstreams can be assigned across developer teams.
 
-    Detailed comments (assessment requirement):
+    Detailed comments (platform requirement):
     - `slug` is a stable URL/key-friendly label for ops tooling; keep it
       non-PHI (no patient/org clinical names).
     - `created_by_user_id` is the JWT subject that created the org; used for

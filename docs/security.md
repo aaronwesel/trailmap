@@ -1,6 +1,6 @@
 # Security checklist (HIPAA-ready prep)
 
-**Not a certification.** Engineering controls for assessment-day SaaS prep. Pair with `docs/hipaa-checklist.md`.
+**Not a certification.** Engineering controls for production launch SaaS prep. Pair with `docs/hipaa-checklist.md`.
 
 ## Passwords
 
@@ -38,7 +38,7 @@
 
 ### TLS-only notes
 
-- Production: terminate TLS on ALB (`ELBSecurityPolicy-TLS13-1-2-2021-06`); redirect HTTP→HTTPS on assessment day.
+- Production: terminate TLS on ALB (`ELBSecurityPolicy-TLS13-1-2-2021-06`); redirect HTTP→HTTPS in production.
 - Redis: `transit_encryption_enabled = true` + AUTH token.
 - App→DB: require SSL in non-local `DATABASE_URL` (`sslmode=require`).
 - Local Compose may use plain HTTP/TCP; never for PHI workloads.

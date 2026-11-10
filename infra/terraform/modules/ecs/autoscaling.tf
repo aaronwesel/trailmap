@@ -7,7 +7,7 @@
 #             desired_count is the bootstrap floor; autoscaling owns runtime count
 #             (see lifecycle.ignore_changes on the ECS services).
 #   Worker  — scale on CPU/memory only (no ALB). For queue-depth scaling on
-#             assessment day, add a custom metric (e.g. Redis list length /
+#             production launch, add a custom metric (e.g. Redis list length /
 #             SQS ApproximateNumberOfMessages) — not wired here.
 #
 # Why separate services:
@@ -18,7 +18,7 @@
 # Multi-AZ: tasks land in private_subnet_ids (multi-AZ). Autoscaling adds tasks;
 # the ALB TG spreads new IPs automatically (stickiness OFF).
 #
-# DO NOT terraform apply until assessment day.
+# DO NOT terraform apply before production apply is authorized.
 
 # -----------------------------------------------------------------------------
 # API service autoscaling

@@ -76,7 +76,7 @@ def render_login_alert(
         raise AlertTemplateError("event_code must be a short snake_case token")
 
     stamp = _utc_stamp(occurred_at)
-    subject = f"[assessment] Security alert: {event_code}"
+    subject = f"[Trailmap] Security alert: {event_code}"
     body_text = (
         "A security-relevant authentication event was recorded.\n"
         f"Event: {event_code}\n"
@@ -110,7 +110,7 @@ def render_system_alert(
         raise AlertTemplateError("severity must be info|warning|critical")
 
     stamp = _utc_stamp(occurred_at)
-    subject = f"[assessment] System alert ({severity}): {alert_code}"
+    subject = f"[Trailmap] System alert ({severity}): {alert_code}"
     body_text = (
         "A system alert was raised.\n"
         f"Code: {alert_code}\n"

@@ -92,6 +92,6 @@ output "ses_from_email" {
 }
 
 output "apply_gate" {
-  description = "Reminder: apply is forbidden until assessment day"
-  value       = "FORBIDDEN_UNTIL_ASSESSMENT_DAY"
+  description = "Reminder: apply is forbidden before production apply is authorized"
+  value       = "MANUAL_APPLY_ONLY"
 }

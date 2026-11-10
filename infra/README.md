@@ -1,6 +1,6 @@
 # Infrastructure
 
-Terraform-managed AWS scaffold for the assessment SaaS (ECS Fargate, ALB, Aurora/RDS Postgres, ElastiCache Redis, Secrets Manager, KMS, CloudWatch, WAF placeholder).
+Terraform-managed AWS scaffold for Trailmap (ECS Fargate, ALB, Aurora/RDS Postgres, ElastiCache Redis, Secrets Manager, KMS, CloudWatch, WAF placeholder).
 
 ## Ownership
 
@@ -9,7 +9,7 @@ Terraform-managed AWS scaffold for the assessment SaaS (ECS Fargate, ALB, Aurora
 
 ## Apply policy (mandatory)
 
-**`terraform apply` is forbidden until assessment day.**
+**`terraform apply` is forbidden before production apply is authorized.**
 
 Until then, only:
 

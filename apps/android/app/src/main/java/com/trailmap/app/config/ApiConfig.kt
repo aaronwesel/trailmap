@@ -1,6 +1,6 @@
-package com.assessment.app.config
+package com.trailmap.app.config
 
-import com.assessment.app.BuildConfig
+import com.trailmap.app.BuildConfig
 
 /**
  * Shared FastAPI backend base URL.

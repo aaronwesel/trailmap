@@ -1,7 +1,7 @@
 # Copy to environments/prod.tfvars (do not commit real secrets).
-# terraform apply is FORBIDDEN until assessment day.
+# terraform apply is FORBIDDEN before production apply is authorized.
 
-project_name = "assessment"
+project_name = "trailmap"
 environment  = "prod"
 aws_region   = "eu-west-1"
 
@@ -25,12 +25,12 @@ worker_desired_count = 2
 worker_min_capacity  = 2
 worker_max_capacity  = 8
 
-# ALB RequestCountPerTarget target (tune on assessment day)
+# ALB RequestCountPerTarget target (tune in production)
 api_requests_per_target = 800
 
 db_engine_version = "15.4"
 db_instance_class = "db.r6g.large"
-db_name           = "assessment"
+db_name           = "trailmap"
 
 redis_node_type = "cache.r6g.large"
 
@@ -38,12 +38,12 @@ log_retention_days = 90
 enable_waf         = true
 enable_nat_gateway = true
 
-# SES placeholders (verify identity on assessment day; DO NOT apply yet)
+# SES placeholders (verify identity in production; DO NOT apply yet)
 enable_ses      = true
 ses_domain_name = ""
 ses_from_email  = ""
 
 tags = {
-  CostCenter = "assessment-prod"
+  CostCenter = "trailmap-prod"
   Criticality = "high"
 }

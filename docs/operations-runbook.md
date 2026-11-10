@@ -1,25 +1,25 @@
-# Assessment-day runbook
+# Operations runbook
 
-Operational playbook for the timed take-home / live assessment. Prep scaffolding lives on this repo; domain work starts only after the prompt is locked.
+Operational playbook for Trailmap production launches, demo dry-runs, and incident response. Use this when standing up staging, rehearsing demos, or coordinating parallel engineering streams.
 
-## Before the clock
+## Before go-live
 
-1. Confirm AWS identity and region (no `terraform apply` until Stream G is ready).
+1. Confirm AWS identity and region (no `terraform apply` until infrastructure is reviewed and approved).
 2. Copy `.env.example` → `.env`; fill OAuth / JWT / keys **locally** only.
-3. `docker compose up --build` — verify db + redis healthy; replace API/frontend stubs when siblings land.
+3. `docker compose up --build` — verify db + redis healthy; confirm API and frontend respond.
 4. Skim [HIPAA checklist](./hipaa-checklist.md); treat rows as gates, not certification.
 
-## Prompt lock (Stream A) — first 15–30 min
+## Scope lock (Stream A) — first 15–30 min
 
 - Cut **MVP vs stretch**; write a one-page ADR (scope, non-goals, tenancy assumption).
-- Do **not** start domain models until MVP is locked.
+- Align on domain models before expanding surface area.
 - Broadcast locked scope to all streams.
 
 ## Parallel streams
 
 | Stream | Owns | Depends on |
 |--------|------|------------|
-| A Spec & slice | MVP lock, ADR | Prompt |
+| A Spec & slice | MVP lock, ADR | Product scope |
 | B Domain API | Models, migrations, workflow APIs | A; auth stubs |
 | C Workers | Queues, idempotency, SSRF, limits | B contracts |
 | D UI | Authenticated flows; keep UI simple | A + auth shell; B |

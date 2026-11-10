@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { fetchMfaStatus } from '../api/auth'
 import { useAuth } from '../auth/AuthContext'
 
-const DISMISS_KEY = 'assessment.mfa_prompt.dismissed'
+const DISMISS_KEY = 'trailmap.mfa_prompt.dismissed'
 
 export function MfaOnboardingBanner() {
   const { user, tokens } = useAuth()

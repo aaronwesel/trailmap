@@ -1,1 +1,1 @@
-"""Assessment FastAPI backend package (auth, alerts, AI client stubs)."""
+"""Trailmap FastAPI backend package (auth, alerts, AI client stubs)."""

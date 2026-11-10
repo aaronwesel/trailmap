@@ -4,7 +4,7 @@ namespace Crawl.Domain.Tests.Robots;
 
 public class RobotsTxtRulesTests
 {
-    private const string Agent = "CrawlAssessmentBot";
+    private const string Agent = "TrailmapCrawlBot";
 
     [Fact]
     public void Parse_Empty_AllowsEverything()
@@ -37,7 +37,7 @@ public class RobotsTxtRulesTests
             User-agent: *
             Disallow: /
 
-            User-agent: CrawlAssessmentBot
+            User-agent: TrailmapCrawlBot
             Disallow: /admin
             Allow: /
             """);
@@ -63,7 +63,7 @@ public class RobotsTxtRulesTests
     {
         var rules = RobotsTxtRules.Parse("""
             User-agent: googlebot
-            User-agent: CrawlAssessmentBot
+            User-agent: TrailmapCrawlBot
             Disallow: /tmp
             """);
 
